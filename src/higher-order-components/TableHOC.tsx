@@ -1,13 +1,17 @@
-import { AiOutlineSortAscending, AiOutlineSortDescending } from "react-icons/ai";
+import {
+  AiOutlineSortAscending,
+  AiOutlineSortDescending,
+} from "react-icons/ai";
 import {
   Column,
   TableOptions,
+  TableState,
   usePagination,
   useSortBy,
   useTable,
 } from "react-table";
 
-function TabelHOC<T extends Object>(
+function TableHOC<T extends object>(
   columns: Column<T>[],
   data: T[],
   containerClassname: string,
@@ -15,12 +19,12 @@ function TabelHOC<T extends Object>(
   showpagination: boolean = false
 ) {
   return function HOC() {
-    const options: TableOptions<T> = {
-      columns,
+    const options: TableOptions<any> = {
+      columns: columns as readonly Column<any>[],
       data,
       initialState: {
         pageSize: 4,
-      },
+      } as Partial<TableState<T>>,
     };
 
     const {
@@ -34,8 +38,8 @@ function TabelHOC<T extends Object>(
       canNextPage,
       canPreviousPage,
       pageCount,
-      state: { pageIndex },
-    } = useTable(options, useSortBy, usePagination);
+      state,
+    }: any = useTable(options, useSortBy, usePagination);
 
     return (
       <div className={`${containerClassname} p-6`}>
@@ -46,9 +50,9 @@ function TabelHOC<T extends Object>(
           {...getTableProps()}
         >
           <thead className="bg-gray-100">
-            {headerGroups.map((headerGroup) => (
+            {headerGroups.map((headerGroup: any) => (
               <tr {...headerGroup.getHeaderGroupProps()} className="border-b">
-                {headerGroup.headers.map((column) => (
+                {headerGroup.headers.map((column: any) => (
                   <th
                     {...column.getHeaderProps(column.getSortByToggleProps())}
                     className="p-4 text-left text-gray-600 font-medium"
@@ -69,11 +73,11 @@ function TabelHOC<T extends Object>(
             ))}
           </thead>
           <tbody {...getTableBodyProps()}>
-            {page.map((row) => {
+            {page.map((row: any) => {
               prepareRow(row);
               return (
                 <tr {...row.getRowProps()} className="even:bg-gray-50">
-                  {row.cells.map((cell) => (
+                  {row.cells.map((cell: any) => (
                     <td
                       {...cell.getCellProps()}
                       className="p-4 text-gray-700 border-t"
@@ -101,7 +105,7 @@ function TabelHOC<T extends Object>(
               Prev
             </button>
             <span className="text-gray-600">
-              Page {pageIndex + 1} of {pageCount}
+              Page {state.pageIndex + 1} of {pageCount}
             </span>
             <button
               disabled={!canNextPage}
@@ -121,4 +125,4 @@ function TabelHOC<T extends Object>(
   };
 }
 
-export default TabelHOC;
+export default TableHOC;
