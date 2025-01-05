@@ -14,7 +14,7 @@ const SidebarContent = () => {
           <ul className="flex flex-col space-y-2">
             <li className="p-2 rounded-xl hover:bg-blue-100">
               <a
-                href="/admin/dashboard"
+                href="/"
                 className="flex items-center text-black hover:text-blue-500"
               >
                 <RiDashboardFill className="mr-2" />
@@ -23,7 +23,7 @@ const SidebarContent = () => {
             </li>
             <li className="p-2 rounded-xl hover:bg-blue-100">
               <a
-                href="/admin/product"
+                href="/"
                 className="flex items-center text-black hover:text-blue-500"
               >
                 <RiShoppingBag3Fill className="mr-2" />
@@ -32,7 +32,7 @@ const SidebarContent = () => {
             </li>
             <li className="p-2 rounded-xl hover:bg-blue-100">
               <a
-                href="/admin/customer"
+                href="/"
                 className="flex items-center text-black hover:text-blue-500"
               >
                 <IoIosPeople className="mr-2" />
@@ -41,7 +41,7 @@ const SidebarContent = () => {
             </li>
             <li className="p-2 rounded-xl hover:bg-blue-100">
               <a
-                href="/admin/transaction"
+                href="/"
                 className="flex items-center text-black hover:text-blue-500"
               >
                 <AiFillFileText className="mr-2" />
@@ -55,7 +55,7 @@ const SidebarContent = () => {
           <ul className="flex flex-col space-y-2">
             <li className="p-2 rounded-xl hover:bg-blue-100">
               <a
-                href="/admin/chart/bar"
+                href="/"
                 className="flex items-center text-black hover:text-blue-500"
               >
                 <FaChartBar className="mr-2" />
@@ -64,7 +64,7 @@ const SidebarContent = () => {
             </li>
             <li className="p-2 rounded-xl hover:bg-blue-100">
               <a
-                href="/admin/chart/pie"
+                href="/"
                 className="flex items-center text-black hover:text-blue-500"
               >
                 <FaChartPie className="mr-2" />
@@ -73,7 +73,7 @@ const SidebarContent = () => {
             </li>
             <li className="p-2 rounded-xl hover:bg-blue-100">
               <a
-                href="/admin/chart/line"
+                href="/"
                 className="flex items-center text-black hover:text-blue-500"
               >
                 <FaChartLine className="mr-2" />
